@@ -1,4 +1,4 @@
-package course;
+package com.course.eureka;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +16,8 @@ public class EurekaApplication {
 	private static final Logger log = LoggerFactory.getLogger(EurekaApplication.class);
 	public static void main(String[] args) {
 		ConfigurableEnvironment evn = SpringApplication.run(EurekaApplication.class, args).getEnvironment();
-		log.info("启动成功！");
-		log.info("127.0.0.1:{}",evn.getProperty("server.port"));
+		log.info("Eureka启动成功！");
+		log.info("http://127.0.0.1:{}",evn.getProperty("server.port"));
 	}
 
 }
