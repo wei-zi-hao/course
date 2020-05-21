@@ -80,10 +80,7 @@
 </template>
 
 <script>
-
-    export default {
-
-    }
+    $('body').attr('class', 'login-layout light-login');
 </script>
 
 <style>
