@@ -1,4 +1,4 @@
-package com.course.system.controller;
+package com.course.business.controller;
 
 import com.course.server.domain.Test;
 import com.course.server.service.TestService;
