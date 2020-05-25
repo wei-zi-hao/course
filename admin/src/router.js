@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router';
-import login from "./views/login.vue";
-import admin from "./views/admin.vue";
+import Login from "./views/login.vue";
+import Admin from "./views/admin.vue";
+import Welcome from "./views/admin/welcome.vue";
 
 Vue.use(Router);
 
@@ -13,10 +14,14 @@ export default new Router({
         redirect:"/login",
     },{
         path: '/login',
-        component:login
+        component:Login
     },{
         path: '/admin',
-        component:admin
+        component:Admin,
+        child:[{
+            path: 'welcome',
+            component:Welcome
+        }]
     }]
 
 })
