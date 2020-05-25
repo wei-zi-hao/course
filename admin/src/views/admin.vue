@@ -978,7 +978,15 @@
 </template>
 
 <script>
-    $('body').attr('class', 'no-skin');
+
+    export default {
+        name : "admin",
+        mounted:function(){
+            $('body').attr('class', 'no-skin');
+        },
+
+
+    }
 </script>
 
 <style>
