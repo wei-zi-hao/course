@@ -1,7 +1,7 @@
-package com.course.business.controller;
+package com.course.business.controller.admin;
 
-import com.course.server.domain.Test;
-import com.course.server.service.TestService;
+import com.course.server.dto.ChapterDto;
+import com.course.server.service.ChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,12 +12,13 @@ import java.util.List;
  * @author EricWei on 2020/5/11
  */
 @RestController
-public class TestController {
+@RequestMapping("/admin")
+public class ChapterController {
 
     @Autowired
-   private TestService testService;
+   private ChapterService chapterService;
     @RequestMapping("/test")
-    public List<Test> test(){
-        return testService.selectTest();
+    public List<ChapterDto> test(){
+        return chapterService.selectChapter();
     }
 }
