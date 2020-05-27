@@ -978,7 +978,21 @@
     export default {
         name:"chapter",
         mounted() {
-            this.$parent.activeSidebar("business-chapter-sidebar");
+            let _this = this;
+            _this.$parent.activeSidebar("business-chapter-sidebar");
+            _this.list();
+        },
+        methods:{
+            /**
+             * 列表查询
+             */
+            list() {
+                let _this = this;
+                _this.$ajax.post('http://localhost:9002/business/admin/chapter/list').then((response)=>{
+                    console.log(response);
+                })
+            },
+            
         }
     }
 </script>

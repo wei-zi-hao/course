@@ -12,12 +12,12 @@ import java.util.List;
  * @author EricWei on 2020/5/11
  */
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/chapter")
 public class ChapterController {
 
     @Autowired
    private ChapterService chapterService;
-    @RequestMapping("/test")
+    @RequestMapping("/list")
     public List<ChapterDto> test(){
         return chapterService.selectChapter();
     }
