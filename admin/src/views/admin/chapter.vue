@@ -96,7 +96,7 @@
              */
             list() {
                 let _this = this;
-                _this.$ajax.post('http://localhost:9002/business/admin/chapter/list').then((response)=>{
+                _this.$ajax.post('http://localhost:9000/business/admin/chapter/list').then((response)=>{
                     console.log(response.data)
                     _this.chapters = response.data;
                 })
