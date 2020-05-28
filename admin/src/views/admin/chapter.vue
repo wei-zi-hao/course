@@ -165,15 +165,17 @@
              * 保存
              */
             save(){
+                Loading.show();
                 let _this = this;
                 _this.$ajax.post('http://localhost:9000/business/admin/chapter/save'
                     ,_this.chapter).then((response)=>{
+                    Loading.hide();
                     console.log(response.data);
                     let resp = response.data;
                     if(resp.success){
                         $("#form-modal").modal("hide");
                        _this.list(1);
-                        toast.success("保存成功！");
+                        Toast.success("保存成功！");
                     }
 
 
@@ -184,29 +186,21 @@
              */
             del(id){
                 let _this = this;
-
-                Swal.fire({
-                    title: '确定删除吗?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                }).then((result) => {
-                    if (result.value) {
-                        _this.$ajax.delete('http://localhost:9000/business/admin/chapter/delete/'+id
-                            ,_this.chapter).then((response)=>{
-                            console.log(response.data);
-                            let resp = response.data;
-                            if(resp.success){
-                                $("#form-modal").modal("hide");
-                                _this.list(1);
-                            }
-                        })
-                      toast.success("删除成功！");
-                    }
+                Confirm.show("确定删除吗?",function () {
+                    Loading.show();
+                    _this.$ajax.delete('http://localhost:9000/business/admin/chapter/delete/'+id
+                        ,_this.chapter).then((response)=>{
+                        Loading.hide();
+                        console.log(response.data);
+                        let resp = response.data;
+                        if(resp.success){
+                            $("#form-modal").modal("hide");
+                            _this.list(1);
+                        }
+                    })
+                    Toast.success("删除成功！");
                 })
+
 
             }
             
