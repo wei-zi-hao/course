@@ -10,4 +10,6 @@ public interface ChapterService {
    public void selectChapter(PageDto pageDto);
 
     public void save(ChapterDto chapterDto);
+
+    public void delete(String id);
 }

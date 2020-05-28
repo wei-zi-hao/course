@@ -9,6 +9,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -40,10 +41,26 @@ public class ChapterServiceImpl implements ChapterService{
 
     @Override
     public void save(ChapterDto chapterDto) {
-        System.out.println(chapterDto);
         Chapter chapter = new Chapter();
-        chapterDto.setId(UuidUtil.getShortUuid());
         BeanUtils.copyProperties(chapterDto,chapter);
+        if(StringUtils.isEmpty(chapterDto.getId())){
+            insert(chapter);
+        }else{
+            update(chapter);
+        }
+    }
+
+
+    private void insert(Chapter chapter) {
+        chapter.setId(UuidUtil.getShortUuid());
         chapterMapper.insert(chapter);
+    }
+    private void update(Chapter chapter) {
+        chapterMapper.updateByPrimaryKey(chapter);
+    }
+
+    @Override
+    public void delete(String id) {
+        chapterMapper.deleteByPrimaryKey(id);
     }
 }

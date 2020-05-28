@@ -5,9 +5,7 @@ import com.course.server.dto.ChapterDto;
 import com.course.server.dto.PageDto;
 import com.course.server.service.ChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author EricWei on 2020/5/11
@@ -19,18 +17,26 @@ public class ChapterController {
     @Autowired
    private ChapterService chapterService;
 
-    @RequestMapping("/list")
+    @PostMapping("/list")
     public ResponseDto list(@RequestBody PageDto pageDto){
         ResponseDto responseDto = new ResponseDto();
         chapterService.selectChapter(pageDto);
         responseDto.setContent(pageDto);
         return responseDto;
     }
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public ResponseDto save(@RequestBody ChapterDto chapterDto){
         ResponseDto responseDto = new ResponseDto();
         chapterService.save(chapterDto);
         responseDto.setContent(chapterDto);
         return responseDto;
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseDto save(@PathVariable String id){
+        ResponseDto responseDto = new ResponseDto();
+        chapterService.delete(id);
+        return responseDto;
+    }
+
 }

@@ -2,15 +2,16 @@ package com.course.server.mapper;
 
 import com.course.server.domain.Chapter;
 import com.course.server.domain.ChapterExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ChapterMapper {
     long countByExample(ChapterExample example);
 
     int deleteByExample(ChapterExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Chapter record);
 
