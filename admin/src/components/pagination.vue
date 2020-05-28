@@ -29,7 +29,7 @@
         &nbsp;
         <span class="m--padding-10">
         每页
-        <select v-model="size">
+        <select v-model="size" v-on:change="list(1)">
             <option value="1">1</option>
             <option value="5">5</option>
             <option value="10">10</option>
