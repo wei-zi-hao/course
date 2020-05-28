@@ -183,15 +183,34 @@
              */
             del(id){
                 let _this = this;
-                _this.$ajax.delete('http://localhost:9000/business/admin/chapter/delete/'+id
-                    ,_this.chapter).then((response)=>{
-                    console.log(response.data);
-                    let resp = response.data;
-                    if(resp.success){
-                        $("#form-modal").modal("hide");
-                        _this.list(1);
+
+                Swal.fire({
+                    title: '确定删除吗?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                }).then((result) => {
+                    if (result.value) {
+                        _this.$ajax.delete('http://localhost:9000/business/admin/chapter/delete/'+id
+                            ,_this.chapter).then((response)=>{
+                            console.log(response.data);
+                            let resp = response.data;
+                            if(resp.success){
+                                $("#form-modal").modal("hide");
+                                _this.list(1);
+                            }
+                        })
+                        Swal.fire(
+                            '删除成功!',
+                            '',
+                            'success'
+                        )
                     }
                 })
+
             }
             
         }
