@@ -11,9 +11,9 @@ const SwalM = Swal.mixin({
 })
 
 Toast = {
-    success: function (message) {
+    success: function (message,position) {
         SwalM.fire({
-            position: 'top-end',
+            position: position||'top',
             icon: 'success',
             title: message,
             showConfirmButton: false,
@@ -21,9 +21,9 @@ Toast = {
         })
     },
 
-    error: function (message) {
+    error: function (message,position) {
         SwalM.fire({
-            position: 'top-end',
+            position: position||'top',
             icon: 'error',
             title: message,
             showConfirmButton: false,
@@ -31,9 +31,9 @@ Toast = {
         })
     },
 
-    warning: function (message) {
+    warning: function (message,position) {
         SwalM.fire({
-            position: 'top-end',
+            position: position||'top',
             icon: 'warning',
             title: message,
             showConfirmButton: false,

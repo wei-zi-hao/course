@@ -5,6 +5,7 @@
                 <i class="ace-icon fa fa-edit "></i>
                 新增
             </button>
+            &nbsp;
             <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
                 <i class="ace-icon fa fa-refresh "></i>
                 刷新
@@ -165,17 +166,25 @@
              * 保存
              */
             save(){
-                Loading.show();
                 let _this = this;
+                // 保存校验
+                if (!Validator.require(_this.chapter.name, "名称")
+                    || !Validator.length(_this.chapter.courseId, "课程ID", 1, 8)) {
+                    return;
+                }
+                Loading.show();
+
                 _this.$ajax.post('http://localhost:9000/business/admin/chapter/save'
                     ,_this.chapter).then((response)=>{
                     Loading.hide();
                     console.log(response.data);
                     let resp = response.data;
+                    $("#form-modal").modal("hide");
                     if(resp.success){
-                        $("#form-modal").modal("hide");
                        _this.list(1);
                         Toast.success("保存成功！");
+                    }else{
+                        Toast.error(resp.message);
                     }
 
 
@@ -196,9 +205,10 @@
                         if(resp.success){
                             $("#form-modal").modal("hide");
                             _this.list(1);
+                            Toast.success("删除成功！");
                         }
                     })
-                    Toast.success("删除成功！");
+
                 })
 
 
