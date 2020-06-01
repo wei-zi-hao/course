@@ -18,6 +18,8 @@ public class ChapterController {
     @Autowired
    private ChapterService chapterService;
 
+    public static final String BUSINESS_NAME = "大章";
+
     @PostMapping("/list")
     public ResponseDto list(@RequestBody PageDto pageDto){
         ResponseDto responseDto = new ResponseDto();
@@ -39,7 +41,7 @@ public class ChapterController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseDto save(@PathVariable String id){
+    public ResponseDto delete(@PathVariable String id){
         ResponseDto responseDto = new ResponseDto();
         chapterService.delete(id);
         return responseDto;
