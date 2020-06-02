@@ -1,7 +1,7 @@
 package com.course.business.controller;
 
 
-import com.course.server.domain.ResponseDto;
+import com.course.server.dto.ResponseDto;
 import com.course.server.exception.BusinessException;
 import com.course.server.exception.ValidatorException;
 import org.slf4j.Logger;

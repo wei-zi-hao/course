@@ -1,6 +1,6 @@
 package com.course.business.controller.admin;
 
-import com.course.server.domain.ResponseDto;
+import com.course.server.dto.ResponseDto;
 import com.course.server.dto.ChapterDto;
 import com.course.server.dto.PageDto;
 import com.course.server.service.ChapterService;

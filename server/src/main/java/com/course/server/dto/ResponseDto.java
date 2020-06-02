@@ -1,4 +1,4 @@
-package com.course.server.domain;
+package com.course.server.dto;
 
 /**
  * @author EricWei on 2020/5/28
