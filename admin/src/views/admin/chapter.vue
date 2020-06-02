@@ -136,7 +136,7 @@
              */
             list(page) {
                 let _this = this;
-                _this.$ajax.post('http://localhost:9000/business/admin/chapter/list'
+                _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/chapter/list'
                 ,{page:page,
                  size:_this.$refs.pagination.size
                }).then((response)=>{
@@ -173,7 +173,7 @@
                 }
                 Loading.show();
 
-                _this.$ajax.post('http://localhost:9000/business/admin/chapter/save'
+                _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/chapter/save'
                     ,_this.chapter).then((response)=>{
                     Loading.hide();
                     console.log(response.data);
@@ -196,7 +196,7 @@
                 let _this = this;
                 Confirm.show("确定删除吗?",function () {
                     Loading.show();
-                    _this.$ajax.delete('http://localhost:9000/business/admin/chapter/delete/'+id
+                    _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/chapter/delete/'+id
                         ,_this.chapter).then((response)=>{
                         Loading.hide();
                         console.log(response.data);
