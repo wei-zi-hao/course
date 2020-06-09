@@ -1,8 +1,8 @@
 package com.course.business.controller.admin;
 
-import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
 import com.course.server.dto.SectionDto;
+import com.course.server.dto.SectionPageDto;
 import com.course.server.service.SectionService;
 import com.course.server.util.ValidatorUtil;
 import org.slf4j.Logger;
@@ -25,11 +25,12 @@ public class SectionController {
      * 列表查询
      */
     @PostMapping("/list")
-    public ResponseDto list(@RequestBody PageDto pageDto) {
+    public ResponseDto list(@RequestBody SectionPageDto sectionPageDto) {
+        ValidatorUtil.require(sectionPageDto.getChapterId(), "ChapterId");
+        ValidatorUtil.require(sectionPageDto.getCourseId(), "CourseId");
         ResponseDto responseDto = new ResponseDto();
-
-        sectionService.list(pageDto);
-        responseDto.setContent(pageDto);
+        sectionService.list(sectionPageDto);
+        responseDto.setContent(sectionPageDto);
         return responseDto;
     }
 
