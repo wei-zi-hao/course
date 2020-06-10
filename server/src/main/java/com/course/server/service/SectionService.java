@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 
@@ -64,6 +65,9 @@ public class SectionService {
      * 新增
      */
     private void insert(Section section) {
+        Date date = new Date();
+        section.setCreatedAt(date);
+        section.setUpdatedAt(date);
         section.setId(UuidUtil.getShortUuid());
         sectionMapper.insert(section);
     }
@@ -72,6 +76,7 @@ public class SectionService {
      * 更新
      */
     private void update(Section section) {
+        section.setUpdatedAt(new Date());
         sectionMapper.updateByPrimaryKey(section);
     }
 
