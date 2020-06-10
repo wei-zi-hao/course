@@ -137,6 +137,11 @@
     },
     mounted: function() {
       let _this = this;
+      let course = SessionStorage.get(SESSION_KEY_COURSE) || {};
+      let chapter = SessionStorage.get(SESSION_KEY_CHAPTER) || {};
+      if (Tool.isEmpty(course) || Tool.isEmpty(chapter)) {
+        _this.$router.push("/welcome");
+      }
       _this.course = course;
       _this.chapter = chapter;
       _this.$refs.pagination.size = 5;
@@ -189,7 +194,8 @@
        */
       save() {
         let _this = this;
-
+        _this.section.courseId = _this.course.id;
+        _this.section.chapterId = _this.chapter.id;
         // 保存校验
         if (1 != 1
           || !Validator.require(_this.section.title, "标题")
