@@ -1,7 +1,6 @@
 package com.course.business.controller.admin;
 
 import com.course.server.dto.CategoryDto;
-import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
 import com.course.server.service.CategoryService;
 import com.course.server.util.ValidatorUtil;
@@ -10,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin/category")
@@ -24,11 +24,11 @@ public class CategoryController {
     /**
      * 列表查询
      */
-    @PostMapping("/list")
-    public ResponseDto list(@RequestBody PageDto pageDto) {
+    @PostMapping("/all")
+    public ResponseDto all() {
         ResponseDto responseDto = new ResponseDto();
-        categoryService.list(pageDto);
-        responseDto.setContent(pageDto);
+        List<CategoryDto> all = categoryService.all();
+        responseDto.setContent(all);
         return responseDto;
     }
 
