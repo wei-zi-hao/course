@@ -34,7 +34,8 @@ public class CategoryService {
         pageDto.setTotal(pageInfo.getTotal());
         List<CategoryDto> categoryDtoList = CopyUtil.copyList(categoryList, CategoryDto.class);
         pageDto.setList(categoryDtoList);
-    }    /**
+    }
+    /**
      * 列表查询
      */
     public List<CategoryDto> all() {
