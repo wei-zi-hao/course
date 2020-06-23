@@ -59,7 +59,7 @@ public class CourseService {
             this.update(course);
         }
         //保存课程分类
-        courseCategoryService.saveBatch(courseDto.getId(),courseDto.getCategorys());
+        courseCategoryService.saveBatch(course.getId(),courseDto.getCategorys());
     }
 
     /**
