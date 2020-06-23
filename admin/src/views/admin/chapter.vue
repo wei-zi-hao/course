@@ -100,7 +100,7 @@
             }
             _this.course = course;
 
-            _this.$parent.activeSidebar("business-chapter-sidebar");
+            _this.$parent.activeSidebar("business-course-sidebar");
             _this.list(1);
         },
         data: function(){
