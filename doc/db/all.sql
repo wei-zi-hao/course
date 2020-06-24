@@ -174,8 +174,8 @@ create table `file` (
   `suffix` varchar(10) comment '后缀',
   `size` int comment '大小|字节B',
   `use` char(1) comment '用途|枚举[FileUseEnum]：COURSE("C", "讲师"), TEACHER("T", "课程")',
-  `created_at` datetime(3) comment '创建时间',
-  `updated_at` datetime(3) comment '修改时间',
+  `created_at` datetime comment '创建时间',
+  `updated_at` datetime comment '修改时间',
   primary key (`id`),
   unique key `path_unique` (`path`)
 ) engine=innodb default charset=utf8mb4 comment='文件';
