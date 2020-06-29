@@ -131,12 +131,13 @@
   import Pagination from "../../components/pagination";
   import File from "../../components/file";
   export default {
-    components: {Pagination},
+    components: {Pagination,File},
     name: "business-teacher",
     data: function() {
       return {
-        teacher: {},
-        teachers: [],
+          teacher: {},
+          teachers: [],
+          FILE_USE:FILE_USE,
       }
     },
     mounted: function() {
@@ -251,6 +252,12 @@
           }
         })
       },
+
+      afterUpload(resp) {
+        let _this = this;
+        let image = resp.content.path;
+        _this.teacher.image = image;
+      }
 
   }
 

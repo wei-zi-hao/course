@@ -10,7 +10,7 @@
 
 <script>
   export default {
-    name: 'file',
+    name: 'uploadFile',
     props: {
       text: {
         default: "上传文件"
