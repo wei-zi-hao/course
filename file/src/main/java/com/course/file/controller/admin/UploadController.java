@@ -67,6 +67,9 @@ public class UploadController {
         FileDto fileDto = new FileDto();
         fileDto.setUse(use);
         fileDto.setPath(path);
+        fileDto.setName(fileName);
+        fileDto.setSuffix(suffix);
+        fileDto.setSize((int) file.getSize());
         fileService.save(fileDto);
 
         ResponseDto responseDto = new ResponseDto();
