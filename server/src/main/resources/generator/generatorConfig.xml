@@ -55,6 +55,6 @@
         <!--        <table tableName="member" domainObjectName="Member"/>-->
         <!--        <table tableName="sms" domainObjectName="Sms"/>-->
        <!-- <table tableName="course" domainObjectName="Course"/>-->
-        <table tableName="file" domainObjectName="File"/>
+        <table tableName="course_content" domainObjectName="CourseContent"/>
     </context>
 </generatorConfiguration>

@@ -43,7 +43,7 @@ public class UploadController {
 
         String key = UuidUtil.getShortUuid();
         String fileName = file.getOriginalFilename();
-        String suffix = fileName.substring(fileName.lastIndexOf("."));
+        String suffix = fileName.substring(fileName.lastIndexOf(".")+1);
 
         // 保存文件到本地
         FileUseEnum useEnum = FileUseEnum.getByCode(use);

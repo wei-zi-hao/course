@@ -77,7 +77,7 @@ public class CourseController {
     @PostMapping("/save-content")
     public ResponseDto saveContent(@RequestBody CourseContentDto contentDto) {
         ResponseDto responseDto = new ResponseDto();
-        //courseService.saveContent(contentDto);
+        courseService.saveContent(contentDto);
         return responseDto;
     }
 
@@ -86,6 +86,14 @@ public class CourseController {
         LOG.info("更新排序");
         ResponseDto responseDto = new ResponseDto();
         courseService.sort(sortDto);
+        return responseDto;
+    }
+
+    @GetMapping("/find-content/{id}")
+    public ResponseDto findContent(@PathVariable String id) {
+        ResponseDto responseDto = new ResponseDto();
+        CourseContentDto CourseContentDto = courseService.findContent(id);
+        responseDto.setContent(CourseContentDto);
         return responseDto;
     }
 }

@@ -2,9 +2,8 @@ package com.course.server.mapper;
 
 import com.course.server.domain.CourseContent;
 import com.course.server.domain.CourseContentExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface CourseContentMapper {
     long countByExample(CourseContentExample example);

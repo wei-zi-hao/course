@@ -3,12 +3,9 @@ package com.course.server.service;
 import com.course.server.domain.CourseContent;
 import com.course.server.domain.CourseContentExample;
 import com.course.server.dto.CourseContentDto;
-import com.course.server.dto.PageDto;
 import com.course.server.mapper.CourseContentMapper;
 import com.course.server.util.CopyUtil;
 import com.course.server.util.UuidUtil;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -24,14 +21,13 @@ public class CourseContentService {
     /**
      * 列表查询
      */
-    public void list(PageDto pageDto) {
-        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
+    public List<CourseContentDto> findContent(String id) {
+
         CourseContentExample courseContentExample = new CourseContentExample();
+        courseContentExample.createCriteria().andIdEqualTo(id);
         List<CourseContent> courseContentList = courseContentMapper.selectByExample(courseContentExample);
-        PageInfo<CourseContent> pageInfo = new PageInfo<>(courseContentList);
-        pageDto.setTotal(pageInfo.getTotal());
         List<CourseContentDto> courseContentDtoList = CopyUtil.copyList(courseContentList, CourseContentDto.class);
-        pageDto.setList(courseContentDtoList);
+        return courseContentDtoList;
     }
 
     /**
@@ -67,4 +63,7 @@ public class CourseContentService {
     public void delete(String id) {
         courseContentMapper.deleteByPrimaryKey(id);
     }
+
+
+
 }
