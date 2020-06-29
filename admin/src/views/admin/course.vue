@@ -133,7 +133,7 @@
                     <file v-bind:input-id="'image-upload'"
                           v-bind:text="'上传封面'"
                           v-bind:suffixs="['jpg', 'jpeg', 'png']"
-                          v-bind:use="FILE_USE.TEACHER.key"
+                          v-bind:use="FILE_USE.COURSE.key"
                           v-bind:after-upload="afterUpload"></file>
                     <div v-show="course.image" class="row">
                         <div class="col-md-4">
